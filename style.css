@@ -1,0 +1,48 @@
+*{box-sizing:border-box}
+body{margin:0}
+/* Layout: one centered column — input card on top, the "then vs now" result below, growth chart last */
+:root{
+  --bg:#FBF8F1; --ink:#1B1712; --muted:#6E6556; --line:#E7DFCC;
+  --gold:#B8862B; --gold-hi:#D9A93F; --card:#FFFFFF; --good:#2E7D4F;
+  --f:'Tajawal',system-ui,'Segoe UI',Tahoma,sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#14110D; --ink:#F4ECDC; --muted:#A99C84; --line:#2E2820; --gold:#E0B04E; --gold-hi:#F2C766; --card:#1D1913; --good:#5FC48A; color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#14110D; --ink:#F4ECDC; --muted:#A99C84; --line:#2E2820; --gold:#E0B04E; --gold-hi:#F2C766; --card:#1D1913; --good:#5FC48A; color-scheme:dark}
+body{background:var(--bg);color:var(--ink);font-family:var(--f);font-size:17px;line-height:1.6;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 48px}
+.wrap{max-width:560px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr);gap:22px}
+.brand{font-weight:800;letter-spacing:.02em;color:var(--gold);font-size:15px}
+h1{font-size:clamp(28px,7vw,40px);line-height:1.2;font-weight:900;margin:0;text-wrap:balance}
+.lead{color:var(--muted);margin:0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px;display:grid;grid-template-columns:minmax(0,1fr);gap:14px}
+label{font-weight:700}
+.inrow{display:flex;align-items:center;gap:10px}
+input[type=number]{flex:1;min-width:0;width:100%;font:inherit;font-size:30px;font-weight:800;padding:8px 14px;border-radius:12px;border:2px solid var(--line);background:var(--bg);color:var(--ink);font-variant-numeric:tabular-nums}
+input[type=number]:focus{outline:none;border-color:var(--gold)}
+.unit{font-weight:700;color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips button{font:inherit;font-weight:700;border:1px solid var(--line);background:transparent;color:var(--ink);border-radius:999px;padding:6px 14px;cursor:pointer}
+.chips button[aria-pressed=true]{background:var(--gold);border-color:var(--gold);color:#1B1712}
+.chips button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.daily{color:var(--muted);font-size:15px}.daily b{color:var(--ink)}
+.res{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.stat{border-radius:16px;padding:16px;border:1px solid var(--line);background:var(--card)}
+.stat .k{font-size:14px;color:var(--muted);font-weight:700}
+.stat .v{font-size:clamp(24px,6vw,32px);font-weight:900;font-variant-numeric:tabular-nums;line-height:1.2}
+.stat.hero{grid-column:1/-1;background:linear-gradient(135deg,var(--gold),var(--gold-hi));border:none;color:#1B1712}
+.stat.hero .k{color:#3a2c10}.stat.hero .v{font-size:clamp(34px,10vw,52px)}
+.stat.gain .v{color:var(--good)}
+canvas{width:100%;height:180px;display:block}
+.note{font-size:13.5px;color:var(--muted);margin:0}
+@media (prefers-reduced-motion:no-preference){.stat .v{transition:color .2s}}
+.logo{display:flex;justify-content:center}.logo img{height:88px;width:auto}
+.follow{display:grid;gap:12px;text-align:center}
+.follow h2{margin:0;font-size:22px;font-weight:900}
+.links{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px}
+.links a{display:flex;align-items:center;justify-content:center;gap:8px;padding:12px;border-radius:12px;border:1px solid var(--line);background:var(--card);color:var(--ink);text-decoration:none;font-weight:700}
+.links a:hover,.links a:focus-visible{border-color:var(--gold);outline:none}
+.links svg{width:20px;height:20px;fill:var(--gold);flex:none}
+.links a.web{grid-column:1/-1;background:var(--gold);border-color:var(--gold);color:#1B1712}
+.links a.web svg{fill:#1B1712}
+.hot{color:var(--muted);font-size:15px}.hot b{color:var(--ink);font-variant-numeric:tabular-nums}
